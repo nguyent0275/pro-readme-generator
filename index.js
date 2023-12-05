@@ -1,9 +1,9 @@
-// TODO: Include packages needed for this application
+// Include packages needed for this application
 const generateMarkdown = require("./utils/generateMarkdown");
 const fs = require("fs");
+const inquirer = require("inquirer");
 
-var inquirer = require("inquirer");
-// TODO: Create an array of questions for user input
+// Create an array of questions for user input
 const questions = [
   {
     type: "input",
@@ -61,38 +61,43 @@ const questions = [
     default: "",
   },
 ];
+// wraps inquirer in a function for initialization and return value
 const promptQuestions = () => {
-  return inquirer
-    .prompt(questions)
-    .then((answers) => {
-      // Use user feedback for... whatever!!
-      let response = {
-        title: answers.title,
-        description: answers.description,
-        install: answers.install,
-        usage: answers.usage,
-        contribution: answers.contribution,
-        testing: answers.testing,
-        username: answers.username,
-        email: answers.email,
-        license: answers.license,
-      };
-      let responseMD = generateMarkdown(response);
-      // TODO: Create a function to write README file
-      fs.writeFile("README.md", responseMD, (err) => {
-        if (err) throw err;
-      });
-    })
-    .catch((error) => {
-      if (error.isTtyError) {
-        // Prompt couldn't be rendered in the current environment
-      } else {
-        // Something else went wrong
-      }
-    });
+  return (
+    inquirer
+      // inquirer prompts the array of questions to the user
+      .prompt(questions)
+      .then((answers) => {
+        // then stores their answers in a object called "response"
+        let response = {
+          title: answers.title,
+          description: answers.description,
+          install: answers.install,
+          usage: answers.usage,
+          contribution: answers.contribution,
+          testing: answers.testing,
+          username: answers.username,
+          email: answers.email,
+          license: answers.license,
+        };
+        // user response is passed into the generateMarkdown function and its return value is stored in "responseMD"
+        let responseMD = generateMarkdown(response);
+        // Create a function to write README file // responseMD is then passed into a writeFile function as the value and written to a "README.md" in the root.
+        fs.writeFile("README.md", responseMD, (err) => {
+          if (err) throw err;
+        });
+      })
+      .catch((error) => {
+        if (error.isTtyError) {
+          console.log("Prompt couldn't be rendered in the current environment");
+        } else {
+          console.log("Something else went wrong");
+        }
+      })
+  );
 };
 
-// TODO: Create a function to initialize app
+// Create a function to initialize app
 function init() {
   promptQuestions();
 }

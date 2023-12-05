@@ -58,34 +58,40 @@ function generateMarkdown(data) {
 ${licenseBadge}
 
 ## Table of Contents
--[Installation](#installation)<br>
--[Usage](#usage)<br>
--[Contributing](#contributing)<br>
--[Tests](#tests)<br>
--[Questions](#questions)<br>
--[License](#license)<br>
+[Installation](#installation)<br>
+[Usage](#usage)<br>
+[Contributing](#contributing)<br>
+[Tests](#tests)<br>
+[Questions](#questions)<br>
+[License](#license)<br>
 
 ## Description
+
 ${data.description}
 
 ## Installation
+
 ${data.install}
 
 ## Usage
+
 ${data.usage}
 
 ## Contributing
+
 ${data.contribution}
 
 ## Tests
+
 ${data.testing}
 
 ## Questions
+
 What is my github repository?<br>
 https://github.com/${data.username}
 
 What is my email and how can you reach me?<br>
-My email is ${data.email}, please feel free to send me an email with any questions regarding projects or colllaborations
+My email is ${data.email}, please feel free to send me an email with any questions regarding projects or colllaborations.
 
 ${dataRenderLicenseSection}`;
 }
