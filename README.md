@@ -27,6 +27,8 @@ A command line interface application that creates professional README's in markd
 
 ## Usage
 
+Walkthrough Guide: https://www.youtube.com/watch?v=IFd0SwEVKTE
+
 My project is for beginner developers who aren't used to the format and syntax for writing a README. This can also be useful for even expert level developers who don't want to waste their time manually typing out their own README's.
 
 ## Contributing
